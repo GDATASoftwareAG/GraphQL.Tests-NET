@@ -5,3 +5,11 @@
 [![Nuget](https://img.shields.io/nuget/v/GraphQL.Tests)](https://www.nuget.org/packages/GraphQL.Tests/)
 
 GraphQL.Tests is small integration testing library for GraphQL.NET.
+
+## Example
+
+TBD
+
+## License
+
+Motor.NET is provided under the [MIT](./LICENSE) license.
