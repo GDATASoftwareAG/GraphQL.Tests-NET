@@ -1,0 +1,16 @@
+.idea/
+*.swp
+*.*~
+bin/
+obj/
+.DS_Store
+.vs/
+v14/
+tools/*
+artifacts/
+test-results/
+TestResults/
+*.trx
+.vscode
+*.user
+.rider
