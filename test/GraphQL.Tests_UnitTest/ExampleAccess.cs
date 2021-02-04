@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace GraphQL.Tests_UnitTest
 {
-    public class ExampleAccess : IExampleAccess
+    public record ExampleAccess : IExampleAccess
     {
         public IEnumerable<Book> GetBooks()
         {

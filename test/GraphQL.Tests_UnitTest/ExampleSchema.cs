@@ -9,7 +9,7 @@ namespace GraphQL.Tests_UnitTest
         public ExampleSchema(IServiceProvider resolver) : base(resolver)
         {
             Query = resolver.GetRequiredService<ExampleQuery>();
-
+            Initialize();
         }
     }
 }
