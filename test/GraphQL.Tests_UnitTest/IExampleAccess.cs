@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 
-namespace GraphQL.Tests_UnitTest
+namespace GraphQL.Tests_UnitTest;
+
+public interface IExampleAccess
 {
-    public interface IExampleAccess
-    {
-        IEnumerable<Book> GetBooks();
-    }
+    IEnumerable<Book> GetBooks();
 }

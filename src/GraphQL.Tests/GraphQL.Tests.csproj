@@ -1,12 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Version>0.3.0</Version>
-    <TargetFramework>net5</TargetFramework>
-    <LangVersion>9</LangVersion>
-    <Authors>ATA-ARES</Authors>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>0.4.0</Version>
+    <TargetFramework>net6</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <Description>GraphQL.Tests is a utility libary for testing Graphql.NET.</Description>
+    <Copyright>Copyright (C) 2021 G DATA CyberDefense AG</Copyright>
+    <Company>G DATA CyberDefense AG</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/GDATASoftwareAG/GraphQL.Tests-NET</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/GDATASoftwareAG/GraphQL.Tests-NET</PackageProjectUrl>
+    <PackageTags>testing graphql http</PackageTags>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="GraphQL" Version="3.3.2" />
     <PackageReference Include="GraphQL.SystemTextJson" Version="3.3.2" />

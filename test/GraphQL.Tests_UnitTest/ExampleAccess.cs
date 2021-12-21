@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 
-namespace GraphQL.Tests_UnitTest
+namespace GraphQL.Tests_UnitTest;
+
+public record ExampleAccess : IExampleAccess
 {
-    public record ExampleAccess : IExampleAccess
+    public IEnumerable<Book> GetBooks()
     {
-        public IEnumerable<Book> GetBooks()
+        return new[]
         {
-            return new[]
-            {
                 new Book("test"),
             };
-        }
     }
 }

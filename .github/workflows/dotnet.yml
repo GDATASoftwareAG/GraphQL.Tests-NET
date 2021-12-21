@@ -21,11 +21,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
-    - name: restore format
-      run: dotnet tool restore --configfile NuGet.config
+        dotnet-version: 6.0.x
     - name: check format
-      run: dotnet format --check ./GraphQL.Tests.sln
+      run: dotnet format --severity error --verify-no-changes ./GraphQL.Tests.sln
 
   build:
     runs-on: ubuntu-latest
@@ -34,7 +32,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x
     - name: Install dependencies
       run: dotnet restore GraphQL.Tests.sln
     - name: Build
@@ -49,6 +47,25 @@ jobs:
         name: artifacts
         path: ./artifacts/*.nupkg
 
+  #code-ql:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - uses: actions/checkout@v2
+  #  - name: Initialize CodeQL
+  #    uses: github/codeql-action/init@v1
+  #    with:
+  #      languages: csharp
+  #  - name: Setup .NET
+  #    uses: actions/setup-dotnet@v1
+  #    with:
+  #      dotnet-version: 6.0.x
+  #  - name: Install dependencies
+  #    run: dotnet restore GraphQL.Tests.sln
+  #  - name: Build
+  #    run: dotnet build --configuration Release --no-restore GraphQL.Tests.sln
+  #  - name: Perform CodeQL Analysis
+  #    uses: github/codeql-action/analyze@v1
+
   deploy:
     needs: build
     if: github.event_name == 'release'
@@ -61,6 +78,6 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 6.0.x
       - name: Push to NuGet Feed
         run: dotnet nuget push './artifacts/*.nupkg' --skip-duplicate --source $NUGET_FEED --api-key $NUGET_KEY
