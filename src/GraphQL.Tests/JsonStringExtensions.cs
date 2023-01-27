@@ -11,7 +11,7 @@ public static class JsonStringExtensions
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         Converters =
             {
-                new ObjectDictionaryConverter(),
+                new InputsJsonConverter(),
                 new JsonConverterBigInteger(),
             }
     };

@@ -21,8 +21,8 @@ public class QueryTestBase<TSchema, TDocumentBuilder>
     public QueryTestBase()
     {
         Services = new SimpleContainer();
-        Executer = new DocumentExecuter(new TDocumentBuilder(), new DocumentValidator(), new ComplexityAnalyzer());
-        Writer = new DocumentWriter(true);
+        Executer = new DocumentExecuter(new TDocumentBuilder(), new DocumentValidator());
+        Writer = new GraphQLSerializer(true);
     }
 
     public ISimpleContainer Services { get; }
@@ -31,7 +31,7 @@ public class QueryTestBase<TSchema, TDocumentBuilder>
 
     public IDocumentExecuter Executer { get; }
 
-    public IDocumentWriter Writer { get; }
+    public IGraphQLTextSerializer Writer { get; }
 
     public Task AssertQuerySuccessAsync(
         string query,
@@ -97,8 +97,8 @@ public class QueryTestBase<TSchema, TDocumentBuilder>
 
         var renderResult = renderErrors ? runResult : new ExecutionResult { Data = runResult.Data };
 
-        var writtenResult = await Writer.WriteToStringAsync(runResult);
-        var expectedResult = await Writer.WriteToStringAsync(expectedExecutionResult);
+        var writtenResult = Writer.Serialize(runResult);
+        var expectedResult = Writer.Serialize(expectedExecutionResult);
 
 
         string additionalInfo = null;
@@ -127,7 +127,7 @@ public class QueryTestBase<TSchema, TDocumentBuilder>
             _.Schema = Schema;
             _.Query = query;
             _.Root = root;
-            _.Inputs = inputs;
+            _.Variables = inputs;
             _.UserContext = userContext;
             _.CancellationToken = cancellationToken;
             _.ValidationRules = rules;
